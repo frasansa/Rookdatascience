@@ -1,0 +1,7 @@
+---
+title: "Rookdatascientist"
+---
+
+Rook Data Scientist: a website about Chess, R, Data and Statistics.
+
+“Rooks belong on open files” - Popular chess wisdom.

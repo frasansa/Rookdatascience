@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Rookdatascience",
+    "section": "",
+    "text": "Rook Data Science: a website about Chess, R, Data and Statistics."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Searching stars",
+    "section": "",
+    "text": "In this section, the advent of code (AoC) challenges are solved using R. The AoC is a series of small programming puzzles for a variety of skill sets and skill levels in any programming language. The challenges are released daily and are a great way to learn a new programming language or to learn new concepts in a familiar language. The challenges are available at https://adventofcode.com."
+  },
+  {
+    "objectID": "chess.html",
+    "href": "chess.html",
+    "title": "Chess",
+    "section": "",
+    "text": "In this section some chess puzzles are presented."
+  }
+]

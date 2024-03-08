@@ -1,0 +1,5 @@
+---
+title: "Chess"
+---
+
+In this section some chess puzzles are presented.
