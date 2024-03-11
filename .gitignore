@@ -6,5 +6,3 @@
 
 # Quarto stuff
 /.quarto/
-**/*_cache/*
-_site/*
