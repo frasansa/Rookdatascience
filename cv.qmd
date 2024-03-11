@@ -1,5 +1,4 @@
 ---
-title: "Chess"
+title: "Two-page CV"
 ---
 
-In this section some chess puzzles are presented.
