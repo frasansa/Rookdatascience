@@ -2,7 +2,7 @@
 
 My personal website using Quarto. 
 
-<www.rookdatascientist.com>
+www.rookdatascientist.com
 
 A website about Chess, R, Data and Statistics.
 
