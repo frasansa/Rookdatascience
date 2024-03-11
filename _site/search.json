@@ -19,5 +19,12 @@
     "title": "Chess",
     "section": "",
     "text": "In this section some chess puzzles are presented."
+  },
+  {
+    "objectID": "stars.html",
+    "href": "stars.html",
+    "title": "Searching stars",
+    "section": "",
+    "text": "In this section, the advent of code (AoC) challenges are solved using R. The AoC is a series of small programming puzzles for a variety of skill sets and skill levels in any programming language. The challenges are released daily and are a great way to learn a new programming language or to learn new concepts in a familiar language. The challenges are available at https://adventofcode.com."
   }
 ]
