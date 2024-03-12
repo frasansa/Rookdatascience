@@ -20,8 +20,6 @@ library(rchess)
 
 # Problem 1
 
-
-
 White to move.
 
 ```{r}
