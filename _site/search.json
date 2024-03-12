@@ -18,7 +18,7 @@
     "href": "chess.html",
     "title": "Chess",
     "section": "",
-    "text": "In this section some chess puzzles are presented. The diagrams are generated using rchess library (https://github.com/jbkunst/rchess)\n\n\nProblem 1\nWhite to move."
+    "text": "In this section some chess puzzles are presented. The diagrams are generated using rchess package (https://github.com/jbkunst/rchess).\n\n\nProblem 1\nWhite to move."
   },
   {
     "objectID": "cv.html",

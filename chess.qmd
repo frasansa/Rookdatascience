@@ -8,16 +8,19 @@ output:
     fig_height: 4
 ---
 
-In this section some chess puzzles are presented. The diagrams are generated using `rchess` library (<https://github.com/jbkunst/rchess>)
+In this section some chess puzzles are presented. The diagrams are generated using `rchess` package (<https://github.com/jbkunst/rchess>).
 
 <br>
 
 ```{r}
+# load library
 library(rchess)
 
 ```
 
 # Problem 1
+
+
 
 White to move.
 
