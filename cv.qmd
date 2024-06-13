@@ -6,7 +6,7 @@ published-title: CV last updated
 engine: knitr
 freeze: false
 cv:
-  pdf: "2_CV_FSanchez_DataScientist_Biostatistician.pdf"
+  pdf: "2_CV_FSanchez_DS.pdf"
 ---
 
 ```{css, echo=FALSE}
