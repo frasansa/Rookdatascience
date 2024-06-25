@@ -1,0 +1,137 @@
+---
+title: "Creating a Gantt chart with R"
+author: "Francisco Sánchez-Sáez"
+date: 2024-06-25
+categories: [R, ggplot2, Data Visualization]
+---
+
+# Introduction
+
+In this entry I will show you how to create a Gantt chart in R using the [ggplot2](https://ggplot2.tidyverse.org/) package. Gantt charts are a great way to visualise project schedules. Although there are several packages that advocate building Gantt charts in R, I have decided that the easiest and most flexible way is to build them using the [ggplot2](https://ggplot2.tidyverse.org/) package. So, here is a step-by-step guide.
+
+# Install and load the required packages
+
+First, make sure you have the [ggplot2](https://ggplot2.tidyverse.org/), [dplyr](https://dplyr.tidyverse.org/), [tidyr](https://tidyr.tidyverse.org/), [lubridate](https://lubridate.tidyverse.org/), and [forcats](https://forcats.tidyverse.org/) packages installed. A shortcut for using these packages is to directly install and load the [tidyverse](https://www.tidyverse.org/) bunch of packages. 
+
+```{r}
+# Load the libraries---------------------------------------------------------
+# install the package (uncomment if the package is not installed)
+# install.packages("tidyverse")
+
+# load the ggplot2 package
+library(tidyverse)
+
+```
+
+# Prepare your data
+
+Prepare your data in a tibble. Your data should include columns for the task name, start date and end date. To define dates we use the `ymd()` function from the [lubridate package](https://lubridate.tidyverse.org/), which allows you to define *Dates* easily as *strings*.
+
+```{r}
+# Create the tasks-----------------------------------------------------------
+tasks <- tibble(
+  task = c(
+  # task 1  
+  "The first task of my project", 
+  # task 2
+  "A super important task", 
+  # task 3
+  "Another super important task",
+  # task 4
+  "A 'in parallel' task",
+  # task 5
+  "The other 'in parallel' task", 
+  # task 6
+  "The last task of my project"),
+  start = c(
+    # task 1  
+    ymd("2024-06-25"),
+    # task 2
+    ymd("2024-07-15"),
+    # task 3 
+    ymd("2024-08-26"),
+    # task 4 
+    ymd("2024-11-08"),
+    # task 5
+    ymd("2024-11-08"),
+    # task 6
+    ymd("2025-02-01")
+    ),
+  end = c(
+    # task 1
+    ymd("2024-07-05"),
+    # task 2
+    ymd("2024-08-16"),
+    # task 3
+    ymd("2024-10-31"),
+    # task 4
+    ymd("2024-12-20"),
+    # task 5
+    ymd("2025-01-31"),
+    # task 6
+    ymd("2025-03-31")
+    ))
+
+tasks
+
+```
+
+Once the tasks are created, we pivot the data longer to feed the `ggplot()` function in a convenient way. `pivot_longer()` is a function from the [tidyr](https://tidyr.tidyverse.org/) package which allow to convert a tibble from wide to long format.
+
+```{r}
+# Pivot longer the tasks-------------------------------------------------------
+tasks_long <- tasks |> 
+  pivot_longer(c(start, end), names_to = "type", values_to = "date")
+
+tasks_long
+
+```
+
+# Plot the diagram
+
+Once we have the tasks in a convenient format we can create the chart First, we define the language of the dates that will be appear in the month names of the chart 
+
+```{r warning=FALSE}
+# Create the Gantt chart-----------------------------------------------------
+# set the language of the months
+# in english
+Sys.setlocale("LC_TIME", "en_EN")
+# in spanish
+# Sys.setlocale("LC_TIME", "es_ES")
+
+```
+
+Now we go for the `ggplot()`. With [ggplot2](https://ggplot2.tidyverse.org/), you start a plot with the `ggplot()` function. It creates a coordinate system to which you can add layers to. The first argument of `ggplot()` is the dataset to use in the graph. So `tasks_long |> ggplot()` creates an empty graph. To complete the graph by adding one or more layers to `ggplot()`. The `geom_line()` function adds a layer of lines to the plot. Every geom function in [ggplot2](https://ggplot2.tidyverse.org/) takes a mapping argument. This defines how variables in your dataset are mapped to visual properties. The mapping argument is always paired with `aes()`, and the 'x' and 'y' arguments of `aes()` specify which variables to map to the x and y axes. 
+
+To build our Gantt chart, we use `geom_line()` to define the tasks. We have each task twice in the **tasks_long** tibble, with two different dates. So we define the argument 'y' with the *task* variable and the argument 'x' with the *date* variable. 
+
+::: {.callout-note}
+Note that the 'size' and 'color' arguments are outside of the `aes()` function, so these arguments don't depend on the data and are fixed. 
+:::
+
+We use the `fct_inorder()` and `fct_rev()` functions from the [forcats](https://forcats.tidyverse.org/) package to set the order of the factors. Specifically, with `fct_inorder` we define the order of the tasks in the same order as they appear in the **tasks_long** tibble. Then with the `fct_rev()` we start from top to bottom to display the tasks.
+
+Then, we use `geom_vline()`to definethe current date with a vertical line.
+
+Next, we define the axis of the dates. We use the `scale_x_date()` function to define the x axis. Setting the limits allows us to centre the breaks in the graph. With the 'date_breaks' argument we can adjust the frequency of the breaks according to our time frame (n weeks, n months, n years, etc.) and with the 'date_labels' argument we can specify how the date appears in the plot.
+
+Finally, we make the last adjustments of the plot. We use the `labs()` function to set the title and the names of the x and y axes. The `theme_bw()` function sets a minimalist theme, with the 'base_size' argument we set the size of all the texts in the plot, and with `theme(plot.title = element_text(hjust = 0.5))` we centre the title of the plot.
+
+```{r fig.width = 8, fig.height = 4, warning=FALSE}
+# Do the plot----------------------------------------------------------------
+tasks_long |>  ggplot() +
+  geom_line(mapping = aes(y = task |> fct_inorder() |> fct_rev(), x = date), 
+            size = 10, color = "purple") +
+  geom_vline(xintercept = Sys.Date(), colour="red", 
+             linetype="dashed",
+             size = 1) +
+  scale_x_date(
+  limits = c(ymd("2024-05-20"), ymd("2025-04-01")),
+  date_breaks = "2 month", date_labels = "%b %Y") +
+  labs(title = "Gantt Chart",
+       x = "Task",
+       y = "Date") +
+  theme_bw(base_size = 16) +
+   theme(plot.title = element_text(hjust = 0.5))
+
+```

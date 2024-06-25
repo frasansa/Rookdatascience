@@ -7,10 +7,22 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - stars.qmd
-      - chess.qmd
-      - cv.qmd
+      - href: stats.qmd
+        text: Statistics and Data Science
+      - href: stars.qmd
+        text: Searching stars
+      - href: chess.qmd
+        text: Chess
+      - href: cv.qmd
+        text: CV
   cookie-consent: true
+
+collections:
+  stats:
+    content: stats
+    sort: "date desc"  # Sort by date in descending order
+    categories: true   # Enable categories if needed
+    date-format: "long"  # Format dates as "long", "medium", "short", etc.
 
 format:
   html:

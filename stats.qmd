@@ -1,0 +1,22 @@
+---
+title: "Statistics and Data Science"
+listing:
+  contents: stats  # Point to the blog collection
+  sort: "date desc"  # Sort by date in descending order
+  type: default  # Default listing type
+  categories: true  # Show categories if enabled
+  date-format: "long"  # Format dates as "long", "medium", "short", etc.
+sidebar:
+  - categories
+---
+
+In this section, you will find some tips on statistics and data science using R. For most of the entries we will use the functions, style and approaches of the [tidyverse](https://www.tidyverse.org/) universe. In addition, I try to stick to the following conventions in the text:
+
+- Packages should appear as [hyperlinks](https://en.wikipedia.org/wiki/Hyperlink) to the package website.
+- Table (tibble) names should be in **bold**.
+- Column/variable names should be in *italics*.
+- Category names and function arguments should be enclosed in single quotes ' '.
+- Name of functions() should be in `console` font.
+
+<br>
+

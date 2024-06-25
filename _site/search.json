@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Rookdatascientist",
+    "objectID": "stats.html",
+    "href": "stats.html",
+    "title": "Statistics and Data Science",
     "section": "",
-    "text": "Rook Data Scientist: a website about Chess, R, Data and Statistics.\n“Rooks belong on open files” - Popular chess wisdom."
+    "text": "In this section, you will find some tips on statistics and data science using R. For most of the entries we will use the functions, style and approaches of the tidyverse universe. In addition, I try to stick to the following conventions in the text:\n\nPackages should appear as hyperlinks to the package website.\nTable (tibble) names should be in bold.\nColumn/variable names should be in italics.\nCategory names and function arguments should be enclosed in single quotes ’ ’.\nName of functions() should be in console font.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCreating a Gantt chart with R\n\n\n\n\n\n\nR\n\n\nggplot2\n\n\nData Visualization\n\n\n\n\n\n\n\n\n\nJune 25, 2024\n\n\nFrancisco Sánchez-Sáez\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "stars.html",
@@ -14,6 +14,13 @@
     "text": "In this section, the advent of code (AoC) challenges are solved using R. The AoC is a series of small programming puzzles for a variety of skill sets and skill levels in any programming language. The challenges are released daily and are a great way to learn a new programming language or to learn new concepts in a familiar language. The challenges are available at https://adventofcode.com."
   },
   {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "Two-page CV",
+    "section": "",
+    "text": "Download current CV"
+  },
+  {
     "objectID": "chess.html",
     "href": "chess.html",
     "title": "Chess",
@@ -21,10 +28,17 @@
     "text": "In this section some chess puzzles are presented. The diagrams are generated using rchess package (https://github.com/jbkunst/rchess).\n\n\nProblem 1\nWhite to move."
   },
   {
-    "objectID": "cv.html",
-    "href": "cv.html",
-    "title": "Two-page CV",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Rookdatascientist",
     "section": "",
-    "text": "Download current CV"
+    "text": "Rook Data Scientist: a website about Chess, R, Data and Statistics.\n“Rooks belong on open files” - Popular chess wisdom."
+  },
+  {
+    "objectID": "stats/gantt_chart.html",
+    "href": "stats/gantt_chart.html",
+    "title": "Creating a Gantt chart with R",
+    "section": "",
+    "text": "Introduction\nIn this entry I will show you how to create a Gantt chart in R using the ggplot2 package. Gantt charts are a great way to visualise project schedules. Although there are several packages that advocate building Gantt charts in R, I have decided that the easiest and most flexible way is to build them using the ggplot2 package. So, here is a step-by-step guide.\n\n\nInstall and load the required packages\nFirst, make sure you have the ggplot2, dplyr, tidyr, lubridate, and forcats packages installed. A shortcut for using these packages is to directly install and load the tidyverse bunch of packages.\n\n# Load the libraries---------------------------------------------------------\n# install the package (uncomment if the package is not installed)\n# install.packages(\"tidyverse\")\n\n# load the ggplot2 package\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\n\nPrepare your data\nPrepare your data in a tibble. Your data should include columns for the task name, start date and end date. To define dates we use the ymd() function from the lubridate package, which allows you to define Dates easily as strings.\n\n# Create the tasks-----------------------------------------------------------\ntasks &lt;- tibble(\n  task = c(\n  # task 1  \n  \"The first task of my project\", \n  # task 2\n  \"A super important task\", \n  # task 3\n  \"Another super important task\",\n  # task 4\n  \"A 'in parallel' task\",\n  # task 5\n  \"The other 'in parallel' task\", \n  # task 6\n  \"The last task of my project\"),\n  start = c(\n    # task 1  \n    ymd(\"2024-06-25\"),\n    # task 2\n    ymd(\"2024-07-15\"),\n    # task 3 \n    ymd(\"2024-08-26\"),\n    # task 4 \n    ymd(\"2024-11-08\"),\n    # task 5\n    ymd(\"2024-11-08\"),\n    # task 6\n    ymd(\"2025-02-01\")\n    ),\n  end = c(\n    # task 1\n    ymd(\"2024-07-05\"),\n    # task 2\n    ymd(\"2024-08-16\"),\n    # task 3\n    ymd(\"2024-10-31\"),\n    # task 4\n    ymd(\"2024-12-20\"),\n    # task 5\n    ymd(\"2025-01-31\"),\n    # task 6\n    ymd(\"2025-03-31\")\n    ))\n\ntasks\n\n# A tibble: 6 × 3\n  task                         start      end       \n  &lt;chr&gt;                        &lt;date&gt;     &lt;date&gt;    \n1 The first task of my project 2024-06-25 2024-07-05\n2 A super important task       2024-07-15 2024-08-16\n3 Another super important task 2024-08-26 2024-10-31\n4 A 'in parallel' task         2024-11-08 2024-12-20\n5 The other 'in parallel' task 2024-11-08 2025-01-31\n6 The last task of my project  2025-02-01 2025-03-31\n\n\nOnce the tasks are created, we pivot the data longer to feed the ggplot() function in a convenient way. pivot_longer() is a function from the tidyr package which allow to convert a tibble from wide to long format.\n\n# Pivot longer the tasks-------------------------------------------------------\ntasks_long &lt;- tasks |&gt; \n  pivot_longer(c(start, end), names_to = \"type\", values_to = \"date\")\n\ntasks_long\n\n# A tibble: 12 × 3\n   task                         type  date      \n   &lt;chr&gt;                        &lt;chr&gt; &lt;date&gt;    \n 1 The first task of my project start 2024-06-25\n 2 The first task of my project end   2024-07-05\n 3 A super important task       start 2024-07-15\n 4 A super important task       end   2024-08-16\n 5 Another super important task start 2024-08-26\n 6 Another super important task end   2024-10-31\n 7 A 'in parallel' task         start 2024-11-08\n 8 A 'in parallel' task         end   2024-12-20\n 9 The other 'in parallel' task start 2024-11-08\n10 The other 'in parallel' task end   2025-01-31\n11 The last task of my project  start 2025-02-01\n12 The last task of my project  end   2025-03-31\n\n\n\n\nPlot the diagram\nOnce we have the tasks in a convenient format we can create the chart First, we define the language of the dates that will be appear in the month names of the chart\n\n# Create the Gantt chart-----------------------------------------------------\n# set the language of the months\n# in english\nSys.setlocale(\"LC_TIME\", \"en_EN\")\n\n[1] \"en_EN\"\n\n# in spanish\n# Sys.setlocale(\"LC_TIME\", \"es_ES\")\n\nNow we go for the ggplot(). With ggplot2, you start a plot with the ggplot() function. It creates a coordinate system to which you can add layers to. The first argument of ggplot() is the dataset to use in the graph. So tasks_long |&gt; ggplot() creates an empty graph. To complete the graph by adding one or more layers to ggplot(). The geom_line() function adds a layer of lines to the plot. Every geom function in ggplot2 takes a mapping argument. This defines how variables in your dataset are mapped to visual properties. The mapping argument is always paired with aes(), and the ‘x’ and ‘y’ arguments of aes() specify which variables to map to the x and y axes.\nTo build our Gantt chart, we use geom_line() to define the tasks. We have each task twice in the tasks_long tibble, with two different dates. So we define the argument ‘y’ with the task variable and the argument ‘x’ with the date variable.\n\n\n\n\n\n\nNote\n\n\n\nNote that the ‘size’ and ‘color’ arguments are outside of the aes() function, so these arguments don’t depend on the data and are fixed.\n\n\nWe use the fct_inorder() and fct_rev() functions from the forcats package to set the order of the factors. Specifically, with fct_inorder we define the order of the tasks in the same order as they appear in the tasks_long tibble. Then with the fct_rev() we start from top to bottom to display the tasks.\nThen, we use geom_vline()to definethe current date with a vertical line.\nNext, we define the axis of the dates. We use the scale_x_date() function to define the x axis. Setting the limits allows us to centre the breaks in the graph. With the ‘date_breaks’ argument we can adjust the frequency of the breaks according to our time frame (n weeks, n months, n years, etc.) and with the ‘date_labels’ argument we can specify how the date appears in the plot.\nFinally, we make the last adjustments of the plot. We use the labs() function to set the title and the names of the x and y axes. The theme_bw() function sets a minimalist theme, with the ‘base_size’ argument we set the size of all the texts in the plot, and with theme(plot.title = element_text(hjust = 0.5)) we centre the title of the plot.\n\n# Do the plot----------------------------------------------------------------\ntasks_long |&gt;  ggplot() +\n  geom_line(mapping = aes(y = task |&gt; fct_inorder() |&gt; fct_rev(), x = date), \n            size = 10, color = \"purple\") +\n  geom_vline(xintercept = Sys.Date(), colour=\"red\", \n             linetype=\"dashed\",\n             size = 1) +\n  scale_x_date(\n  limits = c(ymd(\"2024-05-20\"), ymd(\"2025-04-01\")),\n  date_breaks = \"2 month\", date_labels = \"%b %Y\") +\n  labs(title = \"Gantt Chart\",\n       x = \"Task\",\n       y = \"Date\") +\n  theme_bw(base_size = 16) +\n   theme(plot.title = element_text(hjust = 0.5))"
   }
 ]
