@@ -19,7 +19,7 @@ White to move.
 ```{r}
 # problem 1----------------------------------------------------------------
 fen1 <- "r4rk1/2q2pp1/p1nbp2p/3p4/3Pn3/2PBBNP1/P4P1P/R1Q1R1K1 w - - 0 1"
-chessboardjs(fen1, width = '50%', height = 'auto')
+chessboardjs(fen1, width = '70%', height = 'auto')
 
 ```
 
