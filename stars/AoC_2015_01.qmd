@@ -1,0 +1,142 @@
+---
+title: "Advent of Code. 2015-01"
+author: "Francisco Sánchez-Sáez"
+date: 2024-06-26
+categories: [Easy]
+echo: TRUE
+---
+
+# Introduction
+
+The puzzle's instructions could be found in: <https://adventofcode.com/2015/day/1>
+
+## Retrieve the input
+
+First, we retrieve the input of the day (see [Advent of Code Setup](AoC_0.qmd)).
+
+```{r}
+# Load packages--------------------------------------------------------------
+library(tidyverse)
+library(httr2)
+
+```
+
+
+```{r echo=FALSE}
+# Create a function to read the inputs---------------------------------------
+read_aoc_input <- function(
+                  year,
+                  day ,
+                  verbose = TRUE,
+                  open_file = FALSE) {
+  
+  session <- paste0("session=", Sys.getenv("AOC_SESSION"))
+  if (session == "session=") {
+    rlang::abort(c(
+      "AOC_SESSION not found, please set the session in .Renviron or in secrets.R",
+    ))
+  }
+  
+  url <- paste0(
+    "https://adventofcode.com/",
+    year,
+    "/day/",
+    day,
+    "/input"
+  )
+
+  if (nchar(day) == 1) day <- paste0(0, day)
+  req <- httr2::request(url)
+  req <- httr2::req_headers(req, cookie = session)
+  response <- httr2::req_perform(req)
+  if (resp_status(response) == 200) {
+  # Get the content of the response
+  puzzle_input <- resp_body_string(response)
+  # Print the puzzle input
+} else {
+  # Print debug information about the response
+  cat("Failed to fetch the puzzle input. Status code:", resp_status(response), "\n")
+  cat("Response Headers:\n")
+  print(response$headers)
+  cat("Response Body:\n")
+  print(resp_body_string(response))
+}
+}
+
+```
+
+```{r}
+# Obtain the inputs--------------------------------------
+input <- read_aoc_input(year = 2015, day = 1)
+input_lines <- str_split(input, "\n")[[1]]
+input_tibble <- tibble(x = input_lines)
+
+```
+
+## Part 1
+
+Santa was hoping for a white Christmas, but his weather machine's "snow" function is powered by stars, and he's fresh out! To save Christmas, he needs you to collect fifty stars by December 25th.
+
+Collect stars by helping Santa solve puzzles. Two puzzles will be made available on each day in the Advent calendar; the second puzzle is unlocked when you complete the first. Each puzzle grants one star. Good luck!
+
+Here's an easy puzzle to warm you up.
+
+Santa is trying to deliver presents in a large apartment building, but he can't find the right floor - the directions he got are a little confusing. He starts on the ground floor (floor 0) and then follows the instructions one character at a time.
+
+An opening parenthesis, (, means he should go up one floor, and a closing parenthesis, ), means he should go down one floor.
+
+The apartment building is very tall, and the basement is very deep; he will never find the top or bottom floors.
+
+For example:
+
+- (()) and ()() both result in floor 0.
+- ((( and (()(()( both result in floor 3.
+- ))((((( also results in floor 3.
+- ()) and ))( both result in floor -1 (the first basement level).
+- ))) and )())()) both result in floor -3.
+
+To what floor do the instructions take Santa?
+
+### Solving the part 1
+
+We can extract the number of "C" symbols using str_extract_all and check the total number of elements of the list using the `lengths()` function.
+
+:::{.callout-note}
+Note that in order to retrieve the "(" and ")" characters, we need to escape them using "\\\\" characters This is necessary as "(" and ")" are part of the regex instructions
+:::
+
+
+```{r}
+# Obtain the number of "(" and the number of ")"-----------------------------
+up <- input_lines |> str_extract_all("\\(") |> lengths()
+down <- input_lines |> str_extract_all("\\)") |> lengths()
+up - down
+
+```
+## Part 2
+
+Now, given the same instructions, find the position of the first character that causes him to enter the basement (floor -1). The first character in the instructions has position 1, the second character has position 2, and so on.
+
+For example:
+
+- ) causes him to enter the basement at character position 1.
+- ()()) causes him to enter the basement at character position 5.
+
+What is the position of the character that causes Santa to first enter the basement?
+
+### Solving the part 2
+
+We need to make a counter that starts from the beginning. We define floor as 0, then we create a "for loop" (yes a for loop: God forgive us) where we add a floor when we find "(" and we subtract a floor when we find ")". We use the `nchar()` function to count the number of a characters in our input string. We use the `seq_len()` function, which allows us to set elegantly the condition of the loop, and the `str_sub()`function to get each character of the string. Finally, we use the `return()` function to exit the loop and return the value of interest, *i*. 
+
+```{r}
+# Obtain the instruction to strives to floor -1------------------------------
+floor <- 0
+for(i in seq_len(nchar(input_lines))){
+if(input_lines |> str_sub(i,i) == "(") floor <- floor + 1
+else floor <- floor -1
+if(floor == -1){return(i)}
+} 
+
+i
+
+```

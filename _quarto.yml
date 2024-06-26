@@ -23,6 +23,11 @@ collections:
     sort: "date desc"  # Sort by date in descending order
     categories: true   # Enable categories if needed
     date-format: "long"  # Format dates as "long", "medium", "short", etc.
+  stars:
+    content: stars
+    sort: "date desc"  # Sort by date in descending order
+    categories: true   # Enable categories if needed
+    date-format: "long"  # Format dates as "long", "medium", "short", etc.
   chess:
     content: chess
     sort: "date desc"  # Sort by date in descending order

@@ -1,5 +1,23 @@
 ---
 title: "Searching stars"
+listing:
+  contents: stars  # Point to the blog collection
+  sort: "date desc"  # Sort by date in descending order
+  type: default  # Default listing type
+  categories: true  # Show categories if enabled
+  date-format: "long"  # Format dates as "long", "medium", "short", etc.
+sidebar:
+  - categories
 ---
 
-In this section, the advent of code (AoC) challenges are solved using R. The AoC is a series of small programming puzzles for a variety of skill sets and skill levels in any programming language. The challenges are released daily and are a great way to learn a new programming language or to learn new concepts in a familiar language. The challenges are available at <https://adventofcode.com>.
+This section features Advent of Code (AoC) challenges using R. The AoC is a series of small programming puzzles for a variety of skill sets and skill levels in any programming language. The challenges are published daily and are a great way to learn a new programming language or to learn new concepts in a familiar language. The challenges are available at <https://adventofcode.com>. The AoC is running from 2015 to the present and consists of two-part puzzles released every day from 1 to 25 December. For the two puzzles of each day, the input is the same.
+
+ For most of the challenges we will use the functions, style and approaches of the [tidyverse](https://www.tidyverse.org/) universe. In addition, I try to stick to the following conventions in the text:
+
+- Packages should appear as [hyperlinks](https://en.wikipedia.org/wiki/Hyperlink) to the package website.
+- Table (tibble) names should be in **bold**.
+- Column/variable names should be in *italics*.
+- Category names and function arguments should be enclosed in single quotes ' '.
+- Name of functions() should be in `console` font.
+
+<br>

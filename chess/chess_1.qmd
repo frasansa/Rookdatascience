@@ -9,7 +9,7 @@ echo: FALSE
 # Problem 1
 
 ```{r}
-# load library
+# load packages--------------------------------------------------------------
 library(rchess)
 
 ```

@@ -6,6 +6,13 @@
     ]
   },
   {
+    "listing": "/stars.html",
+    "items": [
+      "/stars/AoC_0.html",
+      "/stars/AoC_2015_01.html"
+    ]
+  },
+  {
     "listing": "/chess.html",
     "items": [
       "/chess/chess_1.html"
