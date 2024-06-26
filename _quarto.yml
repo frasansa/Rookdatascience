@@ -3,6 +3,7 @@ project:
 
 website:
   title: "Rookdatascientist"
+  google-analytics: "`r Sys.getenv('GA_MEASUREMENT_ID')`" 
   navbar:
     left:
       - href: index.qmd
