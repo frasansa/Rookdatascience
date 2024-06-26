@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -68,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 
 <script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
@@ -86,23 +117,36 @@ cookieconsent.run({
 });
 </script> 
   
-<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 
-<script src="site_libs/jquery-1.11.0/jquery.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script src="site_libs/chessjs-0.9.1/chess.min.js"></script>
-
-<link href="site_libs/chessboardjs-0.3.0/chessboard-0.3.0.min.css" rel="stylesheet">
-
-<script src="site_libs/chessboardjs-0.3.0/chessboard-0.3.0.min.js"></script>
-
-<script src="site_libs/chessboardjs.themes-0.1/chessboardjs.themes.js"></script>
-
-<script src="site_libs/chessboardjs.themes-0.1/chessboardjs.themes.data.js"></script>
-
-<script src="site_libs/chessboardjs-binding-0.1/chessboardjs.js"></script>
-
-
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -156,14 +200,8 @@ cookieconsent.run({
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
-  </ul>
-</nav>
-    </div>
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Tactics">Tactics <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -186,22 +224,52 @@ cookieconsent.run({
 </header>
 
 
-<p>In this section some chess puzzles are presented. The diagrams are generated using <code>rchess</code> package (<a href="https://github.com/jbkunst/rchess" class="uri">https://github.com/jbkunst/rchess</a>).</p>
+<p>Welcome to the Chess Problems section! Here you will find various chess problems to solve. The diagrams are generated using <code>rchess</code> package (<a href="https://github.com/jbkunst/rchess" class="uri">https://github.com/jbkunst/rchess</a>).</p>
 <p><br></p>
-<section id="problem-1" class="level1">
-<h1>Problem 1</h1>
-<p>White to move.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="htmlwidget-fd48a1e7c07b898bf61f" style="width:100%;height:650px;" class="chessboardjs html-widget"></div>
-<script type="application/json" data-for="htmlwidget-fd48a1e7c07b898bf61f">{"x":{"fen":"r4rk1/2q2pp1/p1nbp2p/3p4/3Pn3/2PBBNP1/P4P1P/R1Q1R1K1 w - - 0 1"},"evals":[],"jsHooks":[]}</script>
+
+
+
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="Tactics" data-listing-date-sort="1719352800000" data-listing-file-modified-sort="1719386938525" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="52">
+<div class="thumbnail">
+<p><a href="./chess/chess_1.html" class="no-external"></a></p><a href="./chess/chess_1.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./chess/chess_1.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./chess/chess_1.html" class="no-external">Chess Problem 1</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./chess/chess_1.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Tactics'); return false;">
+Tactics
 </div>
 </div>
-
-
-</section>
-
-</main> <!-- /main -->
+<div class="listing-description">
+<a href="./chess/chess_1.html" class="no-external">White to move.</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./chess/chess_1.html" class="no-external">
+<div class="listing-date">
+June 26, 2024
+</div>
+<div class="listing-author">
+Francisco Sánchez-Sáez
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -1,31 +1,15 @@
 ---
 title: "Chess"
-echo: false
-warning: false
-output:
-  quarto::html_document:
-    fig_width: 4
-    fig_height: 4
+listing:
+  contents: chess  # Point to the blog collection
+  sort: "date desc"  # Sort by date in descending order
+  type: default  # Default listing type
+  categories: true  # Show categories if enabled
+  date-format: "long"  # Format dates as "long", "medium", "short", etc.
+sidebar:
+  - categories
 ---
 
-In this section some chess puzzles are presented. The diagrams are generated using `rchess` package (<https://github.com/jbkunst/rchess>).
+Welcome to the Chess Problems section! Here you will find various chess problems to solve. The diagrams are generated using `rchess` package (<https://github.com/jbkunst/rchess>).
 
 <br>
-
-```{r}
-# load library
-library(rchess)
-
-```
-
-# Problem 1
-
-White to move.
-
-```{r}
-# problem 1----------------------------------------------------------------
-fen1 <- "r4rk1/2q2pp1/p1nbp2p/3p4/3Pn3/2PBBNP1/P4P1P/R1Q1R1K1 w - - 0 1"
-chessboardjs(fen = fen1, width = 200, height = 200)
-
-```
-

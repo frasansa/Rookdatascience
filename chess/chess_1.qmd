@@ -1,0 +1,37 @@
+---
+title: "Chess Problem 1"
+author: "Francisco Sánchez-Sáez"
+date: 2024-06-26
+categories: [Tactics]
+echo: FALSE
+---
+
+# Problem 1
+
+```{r}
+# load library
+library(rchess)
+
+```
+
+White to move.
+
+```{r}
+# problem 1----------------------------------------------------------------
+fen1 <- "r4rk1/2q2pp1/p1nbp2p/3p4/3Pn3/2PBBNP1/P4P1P/R1Q1R1K1 w - - 0 1"
+chessboardjs(fen1, width = '50%', height = 'auto')
+
+```
+
+<br>
+
+<p>
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Show the solution
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    1.Bxh6 gxh6 2.Qxh6 +-
+  </div>
+</div>

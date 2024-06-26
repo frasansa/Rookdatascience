@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Francisco Sánchez-Sáez">
+<meta name="dcterms.date" content="2024-06-26">
 
-<title>Rookdatascientist - Searching stars</title>
+<title>Rookdatascientist - Chess Problem 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -86,9 +88,25 @@ cookieconsent.run({
 });
 </script> 
   
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="../site_libs/jquery-1.11.0/jquery.min.js"></script>
+
+<script src="../site_libs/chessjs-0.9.1/chess.min.js"></script>
+
+<link href="../site_libs/chessboardjs-0.3.0/chessboard-0.3.0.min.css" rel="stylesheet">
+
+<script src="../site_libs/chessboardjs-0.3.0/chessboard-0.3.0.min.js"></script>
+
+<script src="../site_libs/chessboardjs.themes-0.1/chessboardjs.themes.js"></script>
+
+<script src="../site_libs/chessboardjs.themes-0.1/chessboardjs.themes.data.js"></script>
+
+<script src="../site_libs/chessboardjs-binding-0.1/chessboardjs.js"></script>
 
 
-<link rel="stylesheet" href="styles.css">
+
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -98,7 +116,7 @@ cookieconsent.run({
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Rookdatascientist</span>
     </a>
   </div>
@@ -109,23 +127,23 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./stats.html"> 
+    <a class="nav-link" href="../stats.html"> 
 <span class="menu-text">Statistics and Data Science</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./stars.html" aria-current="page"> 
+    <a class="nav-link" href="../stars.html"> 
 <span class="menu-text">Searching stars</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./chess.html"> 
+    <a class="nav-link" href="../chess.html"> 
 <span class="menu-text">Chess</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv.html"> 
+    <a class="nav-link" href="../cv.html"> 
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
@@ -140,21 +158,42 @@ cookieconsent.run({
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Searching stars</h1>
-</div>
+<h1 class="title">Chess Problem 1</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Tactics</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Francisco Sánchez-Sáez </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 26, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -164,9 +203,29 @@ cookieconsent.run({
 </header>
 
 
-<p>In this section, the advent of code (AoC) challenges are solved using R. The AoC is a series of small programming puzzles for a variety of skill sets and skill levels in any programming language. The challenges are released daily and are a great way to learn a new programming language or to learn new concepts in a familiar language. The challenges are available at <a href="https://adventofcode.com" class="uri">https://adventofcode.com</a>.</p>
+<section id="problem-1" class="level1">
+<h1>Problem 1</h1>
+<p>White to move.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-044fd2888033944cb8f3" style="width:50%;height:auto;" class="chessboardjs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-044fd2888033944cb8f3">{"x":{"fen":"r4rk1/2q2pp1/p1nbp2p/3p4/3Pn3/2PBBNP1/P4P1P/R1Q1R1K1 w - - 0 1"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p><br></p>
+<p>
+<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+Show the solution
+</button>
+</p>
+<div id="collapseExample" class="collapse">
+<div class="card card-body">
+<pre><code>1.Bxh6 gxh6 2.Qxh6 +-</code></pre>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

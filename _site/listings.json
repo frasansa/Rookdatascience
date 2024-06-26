@@ -4,5 +4,11 @@
     "items": [
       "/stats/gantt_chart.html"
     ]
+  },
+  {
+    "listing": "/chess.html",
+    "items": [
+      "/chess/chess_1.html"
+    ]
   }
 ]

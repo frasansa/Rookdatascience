@@ -21,11 +21,18 @@
     "text": "Download current CV"
   },
   {
+    "objectID": "chess/chess_1.html",
+    "href": "chess/chess_1.html",
+    "title": "Chess Problem 1",
+    "section": "",
+    "text": "Problem 1\nWhite to move.\n\n\n\n\n\n\n\n\n\nShow the solution\n\n\n\n\n1.Bxh6 gxh6 2.Qxh6 +-"
+  },
+  {
     "objectID": "chess.html",
     "href": "chess.html",
     "title": "Chess",
     "section": "",
-    "text": "In this section some chess puzzles are presented. The diagrams are generated using rchess package (https://github.com/jbkunst/rchess).\n\n\nProblem 1\nWhite to move."
+    "text": "Welcome to the Chess Problems section! Here you will find various chess problems to solve. The diagrams are generated using rchess package (https://github.com/jbkunst/rchess).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nChess Problem 1\n\n\n\n\n\n\nTactics\n\n\n\n\n\n\n\n\n\nJune 26, 2024\n\n\nFrancisco Sánchez-Sáez\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
